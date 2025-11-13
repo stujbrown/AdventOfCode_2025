@@ -1,8 +1,5 @@
-#include "application.h"
-
-#include <stdlib.h>
-#include <exception>
-#include <iostream>
+import aoc;
+import std;
 
 int main(int argc, const char* argv[])
 {

@@ -2,15 +2,20 @@
 
 for /l %%x in (1, 1, 25) do (
 
-	if NOT EXIST src/days/day%%x.cpp (
+	if NOT EXIST src/days/day%%x.cppm (
 		(
-			echo #include "aoc_days.h"
+			echo export module aoc:day%%x;
+			echo import std;
 			echo:
-			echo void aoc::day%%x(std::string_view inputFilePath^)
+			echo class Day%%x
 			echo {
-			echo 	(void^)inputFilePath;
-			echo }
-		) > src/days/day%%x.cpp
+			echo public:
+			echo     void run(std::string_view inputFilePath^)
+			echo     {
+			echo         (void^)inputFilePath;
+			echo     }
+			echo };
+		) > src/days/day%%x.cppm
 	)
 
 	if NOT EXIST inputs/day%%x.txt (

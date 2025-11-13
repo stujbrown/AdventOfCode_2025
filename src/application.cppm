@@ -1,14 +1,41 @@
-#include "application.h"
-#include "days/aoc_days.h"
+export module aoc;
 
-#include <stdlib.h>
-#include <fstream>
-#include <chrono>
+import std.compat;
+
+import :day1;
+import :day2;
+import :day3;
+import :day4;
+import :day5;
+import :day6;
+import :day7;
+import :day8;
+import :day9;
+import :day10;
+import :day11;
+import :day12;
+import :day13;
+import :day14;
+import :day15;
+import :day16;
+import :day17;
+import :day18;
+import :day19;
+import :day20;
+import :day21;
+import :day22;
+import :day23;
+import :day24;
+import :day25;
 
 namespace aoc
 {
+    export struct Args
+    {
+        int dayToRun = -1;
+    };
 
-    Args parseArgs(int numArgs, const char* args[])
+    export Args parseArgs(int numArgs, const char* args[])
     {
         int dayToRun = -1;
         if (numArgs > 1)
@@ -16,6 +43,26 @@ namespace aoc
             dayToRun = atoi(args[1]);
         }
         return Args{ .dayToRun = dayToRun };
+    }
+
+    export void run(const Args& args);
+}
+
+module : private;
+
+namespace aoc
+{
+    template<typename T>
+    concept RunnableDay = requires(T t, std::string_view inputFilePath)
+    {
+        { t.run(inputFilePath) };
+    };
+
+    template<typename TDay> requires RunnableDay<TDay>
+    void runDay(std::string_view inputFilePath)
+    {
+        TDay day;
+        day.run(inputFilePath);
     }
 
     void run(const Args& args)
@@ -28,10 +75,10 @@ namespace aoc
             std::cout << std::endl;
         }
 
-#define INVOKE_DAY(number) case number: day##number("inputs/day"#number".txt"); break;
 
         const auto startTime = std::chrono::high_resolution_clock::now();
 
+#define INVOKE_DAY(number) case number: runDay<Day##number>("inputs/day"#number".txt"); break;
         switch (dayToRun)
         {
             INVOKE_DAY(1);
@@ -62,7 +109,6 @@ namespace aoc
 
         default:
             std::cout << "Invalid day\n";
-            break;
         }
 
         const auto endTime = std::chrono::high_resolution_clock::now();
