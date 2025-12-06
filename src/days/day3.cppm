@@ -12,7 +12,7 @@ public:
         --digitsRemaining;
         const auto largestItr = std::max_element(bankView.begin(), bankView.begin() + bankView.length() - digitsRemaining);
 
-        return (((*largestItr) - '0') * std::pow(10, digitsRemaining)) +
+        return (((*largestItr) - '0') * (size_t)std::pow(10, digitsRemaining)) +
             calcJoltageRecursive(std::string_view(largestItr + 1, bankView.end()), digitsRemaining);
     }
 
