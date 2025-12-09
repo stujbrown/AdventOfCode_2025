@@ -98,6 +98,9 @@
     <ClCompile Include="src\vec2.cppm">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\vec3.cppm">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day9.txt">

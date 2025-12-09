@@ -39,6 +39,7 @@
     <ClCompile Include="src\days\day9.cppm" />
     <ClCompile Include="src\main.cppm" />
     <ClCompile Include="src\vec2.cppm" />
+    <ClCompile Include="src\vec3.cppm" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="inputs\day1.txt" />
@@ -122,6 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
