@@ -4,11 +4,11 @@ import vec3;
 
 namespace
 {
-    inline float distance(const IntVec3& lhs, const IntVec3& rhs)
+    inline double distance(const IntVec3& lhs, const IntVec3& rhs)
     {
-        const float dX = float(rhs.x) - float(lhs.x);
-        const float dY = float(rhs.y) - float(lhs.y);
-        const float dZ = float(rhs.z) - float(lhs.z);
+        const double dX = double(rhs.x) - double(lhs.x);
+        const double dY = double(rhs.y) - double(lhs.y);
+        const double dZ = double(rhs.z) - double(lhs.z);
         return std::sqrt(dX * dX + dY * dY + dZ * dZ);
     }
 }
